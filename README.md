@@ -1,24 +1,43 @@
-# Capybara::Mocktime
+# Capybara Mocktime
 
-TODO: Write a gem description
+A Ruby gem for synchronizing time between the browser and tests using Timecop
+and Sinon.
 
 ## Installation
 
 Add this line to your application's Gemfile:
 
-    gem 'capybara-mocktime'
+```ruby
+gem 'capybara-mocktime'
+```
 
-And then execute:
+Include the rack middleware to inject the fake time into the document.
 
-    $ bundle
+```ruby
+Capybara.app = Rack::Builder.app do
+  use Rack::Mocktime
+  run App
+end
+```
 
-Or install it yourself as:
+### RSpec
 
-    $ gem install capybara-mocktime
+```ruby
+require 'capybara/mocktime/rspec'
+```
 
 ## Usage
 
-TODO: Write usage instructions here
+### RSpec
+
+Tag your specs with a `mock_time` value:
+
+
+```ruby
+context 'when the browser time is 8:30am', mock_time: '8:30am' do
+  it 'does something'
+end
+```
 
 ## Contributing
 
