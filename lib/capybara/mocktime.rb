@@ -15,7 +15,6 @@ module Capybara
       end
 
       def travel(*args)
-        p 'Foobar'
         @mocked = true
         Timecop.travel(*args)
       end

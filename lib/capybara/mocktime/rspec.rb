@@ -1,3 +1,5 @@
+require 'chronic'
+
 module Capybara
   module Mocktime
     module RSpec
