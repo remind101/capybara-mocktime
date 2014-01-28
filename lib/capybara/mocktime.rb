@@ -24,6 +24,10 @@ module Capybara
         Timecop.return
       end
 
+      def advance_sinon(ms)
+        Capybara.current_session.execute_script "if (window.clock) { window.clock.tick(#{ms}); }"
+      end
+
       def mocked?
         @mocked
       end
